@@ -1,0 +1,21 @@
+<?php
+$this->prepareImage(array(50, 50));
+$strURL = specialchars($this->getURL());
+$strTitle = specialchars($this->getTitle(0));
+$strTitles = specialchars($this->getTitles(' - '));
+?>
+<div class="SolrImageDocument">
+<div class="image_container">
+<a href="<?php echo $strURL; ?>" <?php echo $this->attributes;?>
+	title="<?php echo $strTitle; ?>"
+	><img src="<?php echo specialchars($this->src); ?>"
+		width="<?php echo $this->width; ?>" height="<?php echo $this->height; ?>"
+		alt="<?php echo specialchars($this->getTitle(1)); ?>"
+	/></a>
+</div>
+<p class="title"><a href="<?php echo $strURL; ?>"
+title="<?php echo $strTitle; ?>"
+	><?php echo $strTitles; ?></a></p>
+<p class="direct"><a href="<?php echo specialchars($this->getImageURL()); ?>"
+	title="<?php echo $strTitles; ?>">Direkt zum Bild</a></p> 
+</div>

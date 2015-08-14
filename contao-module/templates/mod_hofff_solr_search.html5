@@ -1,0 +1,52 @@
+<!-- indexer::stop -->
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>
+<?php if($this->live): ?>
+	data-query-id="<?php echo specialchars($this->queryID); ?>"
+	data-live-target-id="<?php echo specialchars($this->liveTargetID); ?>"
+	data-live-target-module="<?php echo specialchars($this->liveTargetModule); ?>"
+	data-live-options="<?php echo specialchars(json_encode($this->liveOptions)); ?>"
+<?php endif; ?>
+>
+<?php if ($this->headline): ?>
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<form action="<?php echo $this->action; ?>" method="get">
+<?php if($this->targetValue): ?>
+<input type="hidden" name="<?php echo $this->targetName; ?>" value="<?php echo $this->targetValue; ?>" />
+<?php endif; ?>
+
+<div class="query"><input type="text" autocomplete="<?php echo $this->queryAutocomplete; ?>"
+	id="<?php echo $this->queryID; ?>" name="<?php echo $this->queryName; ?>"
+	value="<?php echo $this->queryValue; ?>" /></div>
+
+<?php if($this->filter): ?>
+<div class="filter">
+	<span class="all"
+		><input type="radio"
+			id="<?php echo $this->filterID; ?>all" name="<?php echo $this->filterName; ?>"
+			value=""
+			<?php if($this->filterChecked == 'all'): ?>checked="checked"<?php endif; ?>
+		/><label for="<?php echo $this->filterID; ?>all"
+		><?php echo $GLOBALS['TL_LANG']['MSC']['hofff_solr_all']; ?></label
+	></span>
+	<?php $i = -1; foreach($this->filter as $strGroup => $strValue): $i++; ?>
+		<span class="group<?php echo $i; ?>"
+			><input type="radio"
+				id="<?php echo $this->filterID, '_group', $i; ?>" name="<?php echo $this->filterName; ?>"
+				value="<?php echo $strValue; ?>"
+				<?php if($this->filterChecked == $strValue): ?>checked="checked"<?php endif; ?>
+			/><label for="<?php echo $this->filterID, '_group', $i; ?>"
+			><?php echo $strGroup; ?></label
+		></span>
+	<?php endforeach; ?>
+</div>
+<?php endif; ?>
+
+<div class="submit"><input type="submit"
+	value="<?php echo $GLOBALS['TL_LANG']['MSC']['search']; ?>" /></div>
+
+</form>
+
+</div>
+<!-- indexer::continue -->

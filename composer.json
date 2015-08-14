@@ -1,0 +1,43 @@
+{
+	"name" : "hofff/contao-solr",
+	"description" : "Contao Solr Integration",
+	"keywords" : [
+		"contao",
+		"emarsys",
+		"newsletter"
+	],
+	"type" : "contao-module",
+	"homepage" : "https://hofff.com/",
+	"license" : "commercial",
+	"authors" : [{
+			"name" : "Oliver Hoff",
+			"email" : "oliver@hofff.com",
+			"homepage" : "https://www.hofff.com/",
+			"role" : "Developer"
+		}
+	],
+	"support" : {
+		"email" : "info@hofff.com",
+		"issues" : "https://github.com/hofff/contao-solr/issues",
+		"source" : "https://github.com/hofff/contao-solr"
+	},
+	"require" : {
+		"php" : ">=5.4",
+		"contao/core" : "~3.2",
+		"contao-community-alliance/composer-plugin" : "~2.0",
+		"kriswallsmith/buzz" : "~0.15.0",
+		"backboneit/contao-mod-article": "~2.0"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Hofff" : "src"
+		}
+	},
+	"extra" : {
+		"contao" : {
+			"sources" : {
+				"contao-module" : "system/modules/hofff_solr"
+			}
+		}
+	}
+}
