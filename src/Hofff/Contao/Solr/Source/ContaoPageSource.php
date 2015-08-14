@@ -62,7 +62,7 @@ class ContaoPageSource extends AbstractDCAConfiguredSource {
 
 	public function getPagesFilePath() {
 		return sprintf(
-			'system/html/hofff-solr-%d-%s.txt',
+			'system/cache/hofff-solr/%d-%s.txt',
 			$this['id'],
 			standardize($this->getName())
 		);

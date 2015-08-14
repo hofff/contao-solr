@@ -71,7 +71,7 @@ class FileSource extends AbstractDCAConfiguredSource {
 
 	public function getFilesFilePath() {
 		return sprintf(
-			'system/html/hofff-solr-%d-%s.txt',
+			'system/cache/hofff-solr/%d-%s.txt',
 			$this['id'],
 			standardize($this->getName())
 		);
