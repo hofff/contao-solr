@@ -3,8 +3,8 @@
 namespace Hofff\Contao\Solr\Source;
 
 use Hofff\Contao\Solr\Index\RequestHandler;
-use Hofff\Contao\Solr\Query\Builder\DataImportHandlerQueryBuilder;
-use Hofff\Contao\Solr\Query\QueryExecutor;
+use Hofff\Contao\Solr\Index\Builder\DataImportHandlerQueryBuilder;
+use Hofff\Contao\Solr\Index\QueryExecutor;
 
 class ContaoPageSource extends AbstractDCAConfiguredSource {
 

@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['edit']
+$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['new']
 	= array('Neuer Anfrage-Handler', 'Neuer Anfrage-Handler');
 $GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['edit']
 	= array('Anfrage-Handler bearbeiten', 'Anfrage-Handler bearbeiten');

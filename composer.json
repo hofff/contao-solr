@@ -26,7 +26,8 @@
 		"contao/core" : "~3.2",
 		"contao-community-alliance/composer-plugin" : "~2.0",
 		"kriswallsmith/buzz" : "~0.15.0",
-		"backboneit/contao-mod-article": "~2.0"
+		"backboneit/contao-mod-article" : "~2.0",
+		"discordier/justtextwidgets": "~0.5"
 	},
 	"autoload" : {
 		"psr-0" : {

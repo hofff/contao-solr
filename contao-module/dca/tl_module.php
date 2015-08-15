@@ -22,7 +22,7 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['hofff_solr_result']
 $GLOBALS['TL_DCA']['tl_module']['palettes']['hofff_solr_resulthofff_solr_nocopy']
 	= '{title_legend},name,headline,type,hofff_solr_copy'
 	. ';{hofff_solr_source_legend},hofff_solr_handler,hofff_solr_sources'
-	. ';{hofff_solr_search_legend},hofff_solr_keywordSplit,hofff_solr_keywordSplitRaw,hofff_solr_keywordMinLength,hofff_solr_prep,hofff_solr_doctypes'
+	. ';{hofff_solr_search_legend},hofff_solr_regex,hofff_solr_prep,hofff_solr_doctypes'
 	. ';{hofff_solr_template_legend},hofff_solr_perPage,hofff_solr_maxPages,hofff_solr_template,hofff_solr_documentTemplates,hofff_solr_showOnEmpty'
 	. ';{protected_legend:hide},protected'
 	. ';{expert_legend:hide},guests,cssID,space';
@@ -208,46 +208,16 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_sources'] = array(
 	'sql'			=> "blob NULL",
 );
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_keywordSplit'] = array(
-	'label'			=> &$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordSplit'],
+$GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_regex'] = array(
+	'label'			=> &$GLOBALS['TL_LANG']['tl_module']['hofff_solr_regex'],
 	'exclude'		=> true,
 	'inputType'		=> 'text',
-	'default'		=> '.,;:()[]{}_-',
+	'default'		=> '\\b(?:[\\PZ]{3,}|[\\pN\\pS]+)\\b',
 	'eval'			=> array(
 		'decodeEntities'=> true,
-		'tl_class'		=> 'clr w50',
+		'tl_class'		=> 'clr long',
 	),
 	'sql'			=> "varchar(255) NOT NULL default ''",
-);
-
-$GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_keywordSplitRaw'] = array(
-	'label'			=> &$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordSplitRaw'],
-	'exclude'		=> true,
-	'inputType'		=> 'text',
-	'default'		=> '\s',
-	'eval'			=> array(
-		'nospace'		=> true,
-		'decodeEntities'=> true,
-		'tl_class'		=> 'w50',
-	),
-	'sql'			=> "varchar(255) NOT NULL default ''",
-);
-
-$GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_keywordMinLength'] = array(
-	'label'			=> &$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordMinLength'],
-	'exclude'		=> true,
-	'inputType'		=> 'text',
-	'default'		=> 10,
-	'eval'			=> array(
-		'mandatory'		=> true,
-		'rgxp'			=> 'digit',
-		'nospace'		=> true,
-		'tl_class'		=> 'clr w50',
-	),
-	'sql'			=> "int(10) unsigned NOT NULL default '0'",
-	'save_callback' => array(
-		array('Hofff\\Contao\\Solr\\DCA\\ModuleDCA', 'savePositiveInteger'),
-	),
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['hofff_solr_prep'] = array(

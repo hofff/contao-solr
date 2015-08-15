@@ -23,13 +23,13 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 	'list' => array(
 		'sorting' => array(
 			'mode'			=> 1,
-			'fields'		=> array('title'),
+			'fields'		=> array('label'),
 			'flag'			=> 1,
 			'panelLayout'	=> 'filter;search,limit',
 		),
 		'label' => array(
-			'fields'		=> array('title'),
-			'format'		=> '%s',
+			'fields'		=> array('label', 'endpoint', 'core'),
+			'format'		=> '%s - %s/%s',
 		),
 		'global_operations' => array(
 // 			'all' => array(
@@ -40,9 +40,19 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 // 			),
 		),
 		'operations' => array(
+			'index' => array(
+				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['index'],
+				'href'				=> 'key=index',
+// 				'icon'				=> 'copy.gif',
+			),
+			'unindex' => array(
+				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['unindex'],
+				'href'				=> 'key=unindex',
+// 				'icon'				=> 'copy.gif',
+			),
 			'edit' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['edit'],
-				'href'				=> 'table=tl_vmi_newsletter',
+				'href'				=> 'table=tl_hofff_solr_index_handler',
 				'icon'				=> 'edit.gif',
 			),
 			'editheader' => array(
@@ -50,11 +60,11 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 				'href'				=> 'act=edit',
 				'icon'				=> 'header.gif',
 			),
-			'copy' => array(
-				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['copy'],
-				'href'				=> 'act=copy',
-				'icon'				=> 'copy.gif',
-			),
+// 			'copy' => array(
+// 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['copy'],
+// 				'href'				=> 'act=copy',
+// 				'icon'				=> 'copy.gif',
+// 			),
 			'delete' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['delete'],
 				'href'				=> 'act=delete',
@@ -71,7 +81,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 
 	'palettes' => array(
 		'__selector__'	=> array(),
-		'default'		=> '{general_legend},name,endpoint,core',
+		'default'		=> '{general_legend},label,endpoint,core;{source_legend},sources',
 	),
 
 	'subpalettes' => array(
@@ -85,8 +95,8 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 			'label'		=> &$GLOBALS['TL_LANG']['MSC']['tstamp'],
 			'sql'		=> "int(10) unsigned NOT NULL default '0'",
 		),
-		'title' => array(
-			'label'		=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['title'],
+		'label' => array(
+			'label'		=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['label'],
 			'exclude'	=> true,
 			'search'	=> true,
 			'inputType'	=> 'text',
@@ -132,11 +142,11 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 			'inputType'		=> 'multiColumnWizard',
 			'eval'			=> array(
 				'doNotSaveEmpty'=> true,
-				'disableSorting'=> true,
+				'hideButtons'	=> true,
 				'tl_class'		=> 'clr',
 				'columnFields'	=> array(
 					'source'		=> array(
-						'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['source'],
+						'label'				=> array(''),
 						'exclude'			=> true,
 						'inputType'			=> 'justtextoption',
 						'options_callback'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'optionsSources'),
@@ -146,7 +156,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 						),
 					),
 					'handler' => array(
-						'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['handler'],
+						'label'				=> array(''),
 						'exclude'			=> true,
 						'inputType'			=> 'select',
 						'options_callback'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'optionsHandler'),

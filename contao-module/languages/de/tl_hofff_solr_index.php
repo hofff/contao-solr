@@ -18,8 +18,8 @@ $GLOBALS['TL_LANG']['tl_hofff_solr_index']['general_legend']
 $GLOBALS['TL_LANG']['tl_hofff_solr_index']['source_legend']
 	= 'Quellen';
 
-$GLOBALS['TL_LANG']['tl_hofff_solr_index']['name']
-	= array('Name', '');
+$GLOBALS['TL_LANG']['tl_hofff_solr_index']['label']
+	= array('Beschriftung', '');
 $GLOBALS['TL_LANG']['tl_hofff_solr_index']['endpoint']
 	= array('Endpunkt', '');
 $GLOBALS['TL_LANG']['tl_hofff_solr_index']['core']
@@ -27,9 +27,5 @@ $GLOBALS['TL_LANG']['tl_hofff_solr_index']['core']
 
 $GLOBALS['TL_LANG']['tl_hofff_solr_index']['sources']
 	= array('Quellen', '');
-$GLOBALS['TL_LANG']['tl_hofff_solr_index']['source']
-	= array('Quelle', '');
-$GLOBALS['TL_LANG']['tl_hofff_solr_index']['handler']
-	= array('Anfrage-Handler', '');
 $GLOBALS['TL_LANG']['tl_hofff_solr_index']['dont_index']
 	= 'Nicht indizieren';

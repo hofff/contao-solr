@@ -33,7 +33,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 		'sorting' => array(
 			'mode'					=> 4,
 			'fields'				=> array('name'),
-			'headerFields'			=> array('name', 'endpoint', 'core'),
+			'headerFields'			=> array('label', 'endpoint', 'core'),
 			'panelLayout'			=> 'filter;sort,search,limit',
 			'disableGrouping'		=> true,
 			'child_record_callback'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexHandlerDCA', 'childRecord'),
@@ -51,7 +51,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 			'edit' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['edit'],
 				'href'				=> 'act=edit',
-				'icon'				=> 'header.gif',
+				'icon'				=> 'edit.gif',
 			),
 // 			'copy' => array(
 // 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['copy'],

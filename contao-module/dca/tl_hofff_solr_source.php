@@ -23,13 +23,13 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_source'] = array(
 	'list' => array(
 		'sorting' => array(
 			'mode'			=> 1,
-			'fields'		=> array('title'),
+			'fields'		=> array('label'),
 			'flag'			=> 1,
 			'panelLayout'	=> 'filter;search,limit',
 		),
 		'label' => array(
-			'fields'		=> array('title'),
-			'format'		=> '%s',
+			'fields'		=> array('label', 'type', 'name'),
+			'format'		=> '%s (%s) [%s]',
 		),
 		'global_operations' => array(
 // 			'all' => array(

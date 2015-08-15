@@ -22,7 +22,7 @@ abstract class AbstractSolrModule extends \Module {
 		$this->strTemplate = $this->hofff_solr_template = $template;
 	}
 
-	protected function getQuery($target) {
+	protected function getQuery($target = null) {
 		if($target && isset($_GET['q' . $target])) {
 			return \Input::get('q' . $target);
 		} elseif(isset($_GET['q'])) {

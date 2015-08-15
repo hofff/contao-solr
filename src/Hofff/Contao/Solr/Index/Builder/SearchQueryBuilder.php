@@ -1,8 +1,8 @@
 <?php
 
-namespace Hofff\Contao\Solr\Query\Builder;
+namespace Hofff\Contao\Solr\Index\Builder;
 
-use Hofff\Contao\Solr\Query\Query;
+use Hofff\Contao\Solr\Index\Query;
 
 class SearchQueryBuilder {
 

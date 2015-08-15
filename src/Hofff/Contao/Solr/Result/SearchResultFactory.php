@@ -22,7 +22,8 @@ class SearchResultFactory {
 	}
 
 	public function createDocument($data) {
-		$class = $this->getDocumentClass($data['m_doctype_s']);
+		$type = $data['m_doctype_s'];
+		$class = $this->getDocumentClass($type);
 		$doc = $class->newInstance();
 		$doc->setData($data);
 		return $doc;

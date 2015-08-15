@@ -1,6 +1,6 @@
 <?php
 
-namespace Hofff\Contao\Solr\Query;
+namespace Hofff\Contao\Solr\Index;
 
 use Buzz\Client\ClientInterface;
 use Buzz\Client\Curl;
@@ -25,8 +25,8 @@ class QueryExecutor {
 			}
 		}
 
-		$resource = $handler->getIndex()->getEndpoint() . '/' . $handler->getName();
-		$params && $response .= '?' . implode('&', $params);
+		$resource = $handler->getEndpoint();
+		$params && $resource .= '?' . implode('&', $params);
 
 		$request = new Request;
 		$request->setResource($resource);

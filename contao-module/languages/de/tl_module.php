@@ -49,12 +49,8 @@ $GLOBALS['TL_LANG']['tl_module']['hofff_solr_handler']
 $GLOBALS['TL_LANG']['tl_module']['hofff_solr_sources']
 	= array('Suchquellen', 'Wählen Sie die Suchquellen aus, in denen gesucht werden soll.');
 
-$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordSplit']
-	= array('Anfragezerlegung', 'Die Zeichen an denen die Suchanfrage in einzelne Suchwörter zerlegt wird.');
-$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordSplitRaw']
-	= array('Anfragezerlegung (RegEx)', 'Die Zeichen (gemäß POSIX Regulären Ausdrücken) an denen die Suchanfrage in einzelne Suchwörter zerlegt wird.');
-$GLOBALS['TL_LANG']['tl_module']['hofff_solr_keywordMinLength']
-	= array('Suchwort Mindestlänge', 'Die Minimallänge eines Suchworts. Wörter die kürzer sind, werden ignoriert.');
+$GLOBALS['TL_LANG']['tl_module']['hofff_solr_regex']
+	= array('Anfragezerlegung', 'Der reguläre Ausdruck um die Anfrage zu zerlegen. Freilassen um keine Zerlegung durchzuführen.');
 $GLOBALS['TL_LANG']['tl_module']['hofff_solr_prep']
 	= array('Anfrage Vorverarbeitung', 'Der Mechanismus der zur Vorverarbeitung der Suchanfrage verwendet werden soll.');
 $GLOBALS['TL_LANG']['tl_module']['hofff_solr_prepOptions'] = array(

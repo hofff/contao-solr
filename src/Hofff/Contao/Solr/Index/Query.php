@@ -1,6 +1,6 @@
 <?php
 
-namespace Hofff\Contao\Solr\Query;
+namespace Hofff\Contao\Solr\Index;
 
 class Query {
 

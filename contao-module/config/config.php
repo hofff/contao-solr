@@ -9,11 +9,13 @@ $GLOBALS['FE_MOD']['application']['hofff_solr_result']
 
 $GLOBALS['BE_MOD']['hofff_solr']['hofff_solr_source'] = array(
 	'tables'	=> array('tl_hofff_solr_source'),
-// 	'icon'		=> '',
+	'icon'		=> 'system/modules/hofff_solr/assets/image/solr.gif',
 );
 $GLOBALS['BE_MOD']['hofff_solr']['hofff_solr_index'] = array(
 	'tables'	=> array('tl_hofff_solr_index', 'tl_hofff_solr_index_handler'),
-// 	'icon'		=> '',
+	'icon'		=> 'system/modules/hofff_solr/assets/image/solr.gif',
+	'index'		=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'keyIndex'),
+	'unindex'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'keyUnindex'),
 );
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][]

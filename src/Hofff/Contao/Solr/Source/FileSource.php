@@ -2,8 +2,8 @@
 
 namespace Hofff\Contao\Solr\Source;
 
-use Hofff\Contao\Solr\Query\Builder\DataImportHandlerQueryBuilder;
-use Hofff\Contao\Solr\Query\QueryExecutor;
+use Hofff\Contao\Solr\Index\Builder\DataImportHandlerQueryBuilder;
+use Hofff\Contao\Solr\Index\QueryExecutor;
 use Hofff\Contao\Solr\Index\RequestHandler;
 
 class FileSource extends AbstractDCAConfiguredSource {
@@ -88,7 +88,7 @@ class FileSource extends AbstractDCAConfiguredSource {
 				if($file->type == 'folder') {
 					$dirs[$file->id] = $file->path;
 				} elseif(!$extensions || isset($extensions[$file->extension])) {
-					$files[$file->id] = true;
+					$files[$file->id] = $file->path;
 				}
 			}
 		} else {
@@ -102,7 +102,7 @@ class FileSource extends AbstractDCAConfiguredSource {
 			$pathConditionExtra = str_repeat(' OR path LIKE ?', count($dirs) - 1);
 			$extensionCondition = $extensions ? 'AND extension IN (' . rtrim(str_repeat('?,', count($extensions)), ',') . ')' : '';
 			$sql = <<<SQL
-SELECT	id
+SELECT	id, path
 FROM	tl_files
 WHERE	type = 'file'
 AND		(path LIKE ?$pathConditionExtra)
@@ -112,11 +112,13 @@ SQL;
 			$result = \Database::getInstance()->prepare($sql)->execute($params);
 
 			while($result->next()) {
-				$files[$result->id] = true;
+				$files[$result->id] = $result->path;
 			}
 		}
 
-		if(false === file_put_contents($this->getFilesFilePath(), implode(',', array_keys($files)))) {
+		$content = 'file,' . implode("\nfile,", $files);
+
+		if(false === file_put_contents($this->getFilesFilePath(), $content)) {
 			throw new \Exception;
 		}
 	}
