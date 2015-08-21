@@ -27,10 +27,17 @@ class FileSource extends AbstractDCAConfiguredSource {
 		$builder->setCommand(DataImportHandlerQueryBuilder::COMMAND_ABORT);
 		$executor->execute($handler, $builder->createQuery());
 
+		$builder = new DataImportHandlerQueryBuilder;
+		$builder->setCommand(DataImportHandlerQueryBuilder::COMMAND_RELOAD_CONFIG);
+		$executor->execute($handler, $builder->createQuery());
+
 		$this->generateFilesFile();
 
 		$builder = new DataImportHandlerQueryBuilder;
 		$builder->setCommand(DataImportHandlerQueryBuilder::COMMAND_FULL_IMPORT);
+		$builder->setClean(true);
+		$builder->setCommit(true);
+		$builder->setOptimize(true);
 		$query = $builder->createQuery();
 		$query->setParam('source', $this->getName());
 		$query->setParam('base', $this->getBase());
@@ -47,10 +54,20 @@ class FileSource extends AbstractDCAConfiguredSource {
 
 		$builder = new DataImportHandlerQueryBuilder;
 		$builder->setCommand(DataImportHandlerQueryBuilder::COMMAND_FULL_IMPORT);
+		$builder->setClean(true);
+		$builder->setCommit(true);
 		$query = $builder->createQuery();
 		$query->setParam('source', $this->getName());
 		$query->setParam('unindex', 1);
 		$executor->execute($handler, $query);
+	}
+
+	public function status(RequestHandler $handler) {
+		$executor = new QueryExecutor;
+
+		$builder = new DataImportHandlerQueryBuilder;
+		$builder->setCommand(DataImportHandlerQueryBuilder::COMMAND_STATUS);
+		return $executor->execute($handler, $builder->createQuery());
 	}
 
 	public function getRoots() {
@@ -118,7 +135,11 @@ SQL;
 
 		$content = 'file,' . implode("\nfile,", $files);
 
-		if(false === file_put_contents($this->getFilesFilePath(), $content)) {
+		$file = TL_ROOT . '/' . $this->getFilesFilePath();
+		$dir = dirname($file);
+		is_dir($dir) || mkdir($dir, 0777, true);
+
+		if(false === file_put_contents($file, $content)) {
 			throw new \Exception;
 		}
 	}

@@ -42,7 +42,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_source'] = array(
 		'operations' => array(
 			'edit' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_source']['edit'],
-				'href'				=> 'table=tl_vmi_newsletter',
+				'href'				=> 'act=edit',
 				'icon'				=> 'edit.gif',
 			),
 // 			'copy' => array(

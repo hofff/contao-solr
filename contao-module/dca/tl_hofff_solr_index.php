@@ -43,12 +43,17 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 			'index' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['index'],
 				'href'				=> 'key=index',
-// 				'icon'				=> 'copy.gif',
+				'icon'				=> 'edit.gif',
 			),
 			'unindex' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['unindex'],
 				'href'				=> 'key=unindex',
-// 				'icon'				=> 'copy.gif',
+				'icon'				=> 'edit.gif',
+			),
+			'status' => array(
+				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['status'],
+				'href'				=> 'key=status',
+				'icon'				=> 'edit.gif',
 			),
 			'edit' => array(
 				'label'				=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index']['edit'],

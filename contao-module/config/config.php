@@ -7,15 +7,16 @@ $GLOBALS['FE_MOD']['application']['hofff_solr_search']
 $GLOBALS['FE_MOD']['application']['hofff_solr_result']
 	= 'Hofff\\Contao\\Solr\\Module\\ResultModule';
 
-$GLOBALS['BE_MOD']['hofff_solr']['hofff_solr_source'] = array(
+$GLOBALS['BE_MOD']['hofff_solr_backend']['hofff_solr_source'] = array(
 	'tables'	=> array('tl_hofff_solr_source'),
 	'icon'		=> 'system/modules/hofff_solr/assets/image/solr.gif',
 );
-$GLOBALS['BE_MOD']['hofff_solr']['hofff_solr_index'] = array(
+$GLOBALS['BE_MOD']['hofff_solr_backend']['hofff_solr_index'] = array(
 	'tables'	=> array('tl_hofff_solr_index', 'tl_hofff_solr_index_handler'),
 	'icon'		=> 'system/modules/hofff_solr/assets/image/solr.gif',
 	'index'		=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'keyIndex'),
 	'unindex'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'keyUnindex'),
+	'status'	=> array('Hofff\\Contao\\Solr\\DCA\\IndexDCA', 'keyStatus'),
 );
 
 $GLOBALS['TL_HOOKS']['outputFrontendTemplate'][]

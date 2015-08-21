@@ -2,6 +2,8 @@
 
 $GLOBALS['TL_LANG']['MOD']['hofff_solr']
 	= 'hofff.com - Solr Integration';
+$GLOBALS['TL_LANG']['MOD']['hofff_solr_backend']
+	= 'Solr';
 $GLOBALS['TL_LANG']['MOD']['hofff_solr_source']
 	= array('Quellen', 'Suchquellen verwalten');
 $GLOBALS['TL_LANG']['MOD']['hofff_solr_index']

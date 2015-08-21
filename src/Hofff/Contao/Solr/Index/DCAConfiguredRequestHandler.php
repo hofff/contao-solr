@@ -20,7 +20,7 @@ class DCAConfiguredRequestHandler implements RequestHandler, \ArrayAccess {
 	/**
 	 * @param array $data
 	 */
-	protected function __construct(array $data) {
+	public function __construct(array $data) {
 		$this->data = $data;
 		$this->buildEndpoint();
 	}

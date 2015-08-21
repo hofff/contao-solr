@@ -2,14 +2,60 @@
 
 namespace Hofff\Contao\Solr\DCA;
 
+use Hofff\Contao\Solr\Source\SourceFactory;
+use Hofff\Contao\Solr\Index\RequestHandlerFactory;
+
 class IndexDCA {
 
+	/**
+	 * @param integer $index
+	 * @return array<array[RequestHandler, Source]>
+	 */
+	public function createHandlerAndSources($index) {
+		$sql = <<<SQL
+SELECT		*
+FROM		tl_hofff_solr_index_source	AS s
+JOIN		tl_hofff_solr_index_handler	AS h ON h.id = s.handler
+JOIN		tl_hofff_solr_index			AS i ON i.id = h.pid
+WHERE		i.id = ?
+GROUP BY	s.source
+SQL;
+		$result = \Database::getInstance()->prepare($sql)->execute($index);
+
+		$handlerAndSources = array();
+		$sourceFactory = SourceFactory::create();
+		$handlerFactory = new RequestHandlerFactory;
+		while($result->next()) {
+			$handler = $handlerFactory->createFromRow($result->row());
+			$source = $sourceFactory->createByID($result->source);
+			$handlerAndSources[] = array($handler, $source);
+		}
+
+		return $handlerAndSources;
+	}
+
 	public function keyIndex() {
-		return 'INDEX';
+		foreach($this->createHandlerAndSources(\Input::get('id')) as list($handler, $source)) {
+			$source->index($handler);
+		}
+		\Controller::redirect('contao/main.php?do=hofff_solr_index');
 	}
 
 	public function keyUnindex() {
-		return 'UNINDEX';
+		foreach($this->createHandlerAndSources(\Input::get('id')) as list($handler, $source)) {
+			$source->unindex($handler);
+		}
+		\Controller::redirect('contao/main.php?do=hofff_solr_index');
+	}
+
+	public function keyStatus() {
+		$output = '';
+
+		foreach($this->createHandlerAndSources(\Input::get('id')) as list($handler, $source)) {
+			$output .= '<pre>' . json_encode(json_decode($source->status($handler), true), JSON_PRETTY_PRINT) . '</pre>';
+		}
+
+		return $output;
 	}
 
 	private $sources;

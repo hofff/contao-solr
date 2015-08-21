@@ -18,6 +18,8 @@ class QueryExecutor {
 	}
 
 	public function execute(RequestHandler $handler, Query $query) {
+		$query->setParam('wt', 'json');
+
 		$params = array();
 		foreach($query->getParams() as $key => $values) {
 			foreach($values as $value) {
