@@ -6,7 +6,7 @@ use Hofff\Contao\Solr\Index\Query;
 
 class SearchQueryBuilder {
 
-	private $query;
+	protected $query;
 
 	public function __construct(Query $query = null) {
 		$this->query = $query ? clone $query : new Query;

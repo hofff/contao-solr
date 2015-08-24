@@ -51,13 +51,13 @@ class ResultModule extends AbstractSolrModule {
 		$page = \Input::get('page') ?: 1;
 		$builder->setPaging($this->hofff_solr_perPage, $page - 1);
 
-		$query = $builder->createQuery();
+		$searchQuery = $builder->createQuery();
 
 		$executor = new QueryExecutor;
 
 		$handlerFactory = new RequestHandlerFactory;
 		$handler = $handlerFactory->createByID($this->hofff_solr_handler);
-		$content = $executor->execute($handler, $query);
+		$content = $executor->execute($handler, $searchQuery);
 
 // 		var_dump($content); exit;
 

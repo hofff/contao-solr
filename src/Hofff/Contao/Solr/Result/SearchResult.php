@@ -8,8 +8,6 @@ class SearchResult implements \IteratorAggregate, \Countable {
 
 	protected $found;
 
-	protected $intPointer = 0;
-
 	public function __construct(array $docs, $found) {
 		$this->docs = $docs;
 		$this->found = $found;
@@ -40,7 +38,7 @@ class SearchResult implements \IteratorAggregate, \Countable {
 	}
 
 	public function count() {
-		return count($this->arrContent['response']['docs']);
+		return count($this->docs);
 	}
 
 }
