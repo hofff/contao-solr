@@ -53,7 +53,7 @@ class Query {
 	}
 
 	public function removeParam($name, $key = null) {
-		if($key !== null) {
+		if($key === null) {
 			unset($this->params[$name]);
 		} else {
 			unset($this->params[$name][$key]);
