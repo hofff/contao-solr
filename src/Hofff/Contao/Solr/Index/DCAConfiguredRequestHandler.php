@@ -46,6 +46,20 @@ class DCAConfiguredRequestHandler implements RequestHandler, \ArrayAccess {
 	}
 
 	/**
+	 * @see \Hofff\Contao\Solr\Index\RequestHandler::prepareQuery()
+	 */
+	public function prepareQuery(Query $query) {
+		foreach(deserialize($this['params'], true) as $param) {
+			if(!strlen($param['name'])) {
+				continue;
+			}
+			$method = $param['add'] ? 'addParam' : 'setParam';
+			$query->$method($param['name'], $param['value']);
+		}
+
+	}
+
+	/**
 	 * @see ArrayAccess::offsetExists()
 	 */
 	public function offsetExists($key) {

@@ -79,7 +79,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 
 	'palettes' => array(
 		'__selector__'	=> array(),
-		'default'		=> '{general_legend},name,type'
+		'default'		=> '{general_legend},label,name,params'
 	),
 
 	'subpalettes' => array(
@@ -98,6 +98,18 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 			'label'			=> &$GLOBALS['TL_LANG']['MSC']['tstamp'],
 			'sql'			=> "int(10) unsigned NOT NULL default '0'",
 		),
+		'label' => array(
+			'label'			=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['label'],
+			'exclude'		=> true,
+			'search'		=> true,
+			'inputType'		=> 'text',
+			'eval'			=> array(
+				'mandatory'		=> true,
+				'maxlength'		=> 255,
+				'tl_class'		=> 'clr w50',
+			),
+			'sql'			=> "varchar(255) NOT NULL default ''",
+		),
 		'name' => array(
 			'label'			=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['name'],
 			'exclude'		=> true,
@@ -110,22 +122,43 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 				'maxlength'		=> 255,
 				'decodeEntities'=> true,
 				'nospace'		=> true,
-				'tl_class'		=> 'clr w50',
-			),
-			'sql'			=> "varchar(255) NOT NULL default ''",
-		),
-		'type' => array(
-			'label'			=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['type'],
-			'exclude'		=> true,
-			'search'		=> true,
-			'inputType'		=> 'text',
-			'eval'			=> array(
-				'maxlength'		=> 255,
-				'decodeEntities'=> true,
-				'nospace'		=> true,
 				'tl_class'		=> 'w50',
 			),
 			'sql'			=> "varchar(255) NOT NULL default ''",
+		),
+		'params' => array(
+			'label'			=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['params'],
+			'exclude'		=> true,
+			'inputType'		=> 'multiColumnWizard',
+			'eval'			=> array(
+				'columnFields' => array(
+					'name' => array(
+						'label'		=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['params_name'],
+						'inputType'	=> 'text',
+						'eval'		=> array(
+							'nospace'		=> true,
+							'decodeEntities'=> true,
+							'style'			=> 'width: 200px;'
+						),
+					),
+					'value' => array(
+						'label'		=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['params_value'],
+						'inputType'	=> 'text',
+						'eval'		=> array(
+							'decodeEntities'=> true,
+							'style'			=> 'width: 300px;',
+						),
+					),
+					'add' => array(
+						'label'		=> &$GLOBALS['TL_LANG']['tl_hofff_solr_index_handler']['params_add'],
+						'inputType'	=> 'checkbox',
+						'eval'		=> array(
+						),
+					),
+				),
+		// 		'tl_class'			=> 'clr'
+			),
+			'sql'			=> "blob NULL",
 		),
 	),
 );

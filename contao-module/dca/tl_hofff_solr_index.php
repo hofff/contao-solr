@@ -108,7 +108,6 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index'] = array(
 			'eval'		=> array(
 				'mandatory'		=> true,
 				'maxlength'		=> 255,
-				'decodeEntities'=> true,
 				'tl_class'		=> 'clr long',
 			),
 			'sql'		=> "varchar(255) NOT NULL default ''",

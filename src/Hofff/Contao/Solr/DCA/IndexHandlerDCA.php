@@ -6,7 +6,7 @@ class IndexHandlerDCA {
 
 	public function childRecord($row) {
 		$view = '<strong>' . $row['name'] . '</strong>';
-		strlen($row['type']) && $view .= '[' . $row['type'] . ']';
+		strlen($row['label']) && $view .= ' ' . $row['label'];
 		return $view;
 	}
 

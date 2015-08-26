@@ -11,7 +11,7 @@ class RequestHandlerFactory {
 
 	public function createByID($id) {
 		$sql = <<<SQL
-SELECT		*
+SELECT		h.*, i.endpoint, i.core
 FROM		tl_hofff_solr_index_handler AS h
 LEFT JOIN	tl_hofff_solr_index AS i ON i.id = h.pid
 WHERE		h.id = ?

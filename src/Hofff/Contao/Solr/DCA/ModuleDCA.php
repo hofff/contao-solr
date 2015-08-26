@@ -114,16 +114,21 @@ class ModuleDCA {
 
 	public function optionsHandlers($dc) {
 		$sql = <<<SQL
-SELECT		h.id, i.label AS index_label, h.name AS handler_name
+SELECT		h.id, i.label AS index_label, h.label AS handler_label, h.name AS handler_name
 FROM		tl_hofff_solr_index_handler AS h
 JOIN		tl_hofff_solr_index AS i ON i.id = h.pid
-ORDER BY	i.label, h.name
+ORDER BY	i.label, h.name, h.label
 SQL;
 		$result = \Database::getInstance()->prepare($sql)->execute();
 
 		$options = array();
 		while($result->next()) {
-			$options[$result->id] = sprintf('%s - %s', $result->index_label, $result->handler_name);
+			$options[$result->id] = trim(sprintf(
+				'%s - %s %s',
+				$result->index_label,
+				$result->handler_name,
+				$result->handler_label
+			));
 		}
 
 		return $options;

@@ -12,4 +12,10 @@ interface RequestHandler {
 	 */
 	public function getEndpoint();
 
+	/**
+	 * @param Query $query
+	 * @return void
+	 */
+	public function prepareQuery(Query $query);
+
 }
