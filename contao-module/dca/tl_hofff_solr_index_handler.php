@@ -138,6 +138,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 						'eval'		=> array(
 							'nospace'		=> true,
 							'decodeEntities'=> true,
+							'preserveTags'	=> true,
 							'style'			=> 'width: 200px;'
 						),
 					),
@@ -146,6 +147,7 @@ $GLOBALS['TL_DCA']['tl_hofff_solr_index_handler'] = array(
 						'inputType'	=> 'text',
 						'eval'		=> array(
 							'decodeEntities'=> true,
+							'preserveTags'	=> true,
 							'style'			=> 'width: 300px;',
 						),
 					),
