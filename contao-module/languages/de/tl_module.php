@@ -84,3 +84,12 @@ $GLOBALS['TL_LANG']['tl_module']['hofff_solr_documentTemplates_template']
 	= array('Template', '');
 $GLOBALS['TL_LANG']['tl_module']['hofff_solr_showOnEmpty']
 	= array('Alternativinhalt bei ergebnisloser Suche', 'Wenn die Suchanfrage keine Ergebnisse liefert, wird das Modul mit einem statischen Inhalt ausgegeben.');
+
+$GLOBALS['TL_LANG']['tl_module']['hofff_solr_params']
+	= array('Parameter', 'Diese Parameter werden allen Anfragen über diesen Handler automatisch hinzugefügt.');
+$GLOBALS['TL_LANG']['tl_module']['hofff_solr_params_name']
+	= array('Name', '');
+$GLOBALS['TL_LANG']['tl_module']['hofff_solr_params_value']
+	= array('Wert', '');
+$GLOBALS['TL_LANG']['tl_module']['hofff_solr_params_add']
+	= array('+', 'Parameter hinzufügen und nicht ersetzen.');
