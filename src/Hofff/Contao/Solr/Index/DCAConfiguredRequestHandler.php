@@ -2,6 +2,8 @@
 
 namespace Hofff\Contao\Solr\Index;
 
+use Hofff\Contao\Solr\Index\Builder\QueryBuilderUtils;
+
 /**
  * @author Oliver Hoff <oliver@hofff.com>
  */
@@ -49,14 +51,7 @@ class DCAConfiguredRequestHandler implements RequestHandler, \ArrayAccess {
 	 * @see \Hofff\Contao\Solr\Index\RequestHandler::prepareQuery()
 	 */
 	public function prepareQuery(Query $query) {
-		foreach(deserialize($this['params'], true) as $param) {
-			if(!strlen($param['name'])) {
-				continue;
-			}
-			$method = $param['add'] ? 'addParam' : 'setParam';
-			$query->$method($param['name'], $param['value']);
-		}
-
+		QueryBuilderUtils::addParamsFromArray($query, $this['params']);
 	}
 
 	/**
