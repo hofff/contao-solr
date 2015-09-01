@@ -97,7 +97,7 @@ SQL;
 		}
 
 		$sql = <<<SQL
-SELECT		id, name, type
+SELECT		id, label, name
 FROM		tl_hofff_solr_index_handler
 WHERE		pid = ?
 ORDER BY	name
@@ -107,7 +107,7 @@ SQL;
 		$options = array();
 		while($result->next()) {
 			$label = $result->name;
-			strlen($result->type) && $label .= ' [' . $result->type . ']';
+			strlen($result->label) && $label .= ' [' . $result->label . ']';
 			$options[$result->id] = $label;
 		}
 
