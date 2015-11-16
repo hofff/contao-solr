@@ -20,6 +20,7 @@ class QueryExecutor {
 	public function execute(RequestHandler $handler, Query $query) {
 		$handler->prepareQuery($query);
 		$query->setParam('wt', 'json');
+		$query->setParam('NOW', time() . '000');
 
 		$params = array();
 		foreach($query->getParams() as $key => $values) {
